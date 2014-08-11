@@ -21,6 +21,8 @@
             "scripts/background.js"
         ]
     },
+    "permissions": ["tabs", "https://*.facebook.com/*/*"],
+
     "page_action": {
         "default_icon": {
             "19": "images/icon-19.png",
@@ -30,3 +32,4 @@
         "default_popup": "popup.html"
     }
 }
+
