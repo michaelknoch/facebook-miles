@@ -19,5 +19,3 @@ chrome.tabs.onUpdated.addListener(function (tabId, status, tab) {
         }
     }
 });
-
-console.log('\'Allo \'Allo! Event Page for Page Action');

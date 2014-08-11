@@ -8,6 +8,13 @@
         "128": "images/icon-128.png"
     },
     "default_locale": "en",
+
+    "content_scripts": [
+        {
+            "matches": ["https://*.facebook.com/*"],
+            "js": ["jquery.js", "content_script.js"]
+        }
+    ],
     "background": {
         "scripts": [
             "scripts/chromereload.js",
@@ -15,6 +22,7 @@
         ]
     },
     "permissions": ["tabs", "https://*.facebook.com/*/*"],
+
     "page_action": {
         "default_icon": {
             "19": "images/icon-19.png",
@@ -24,3 +32,4 @@
         "default_popup": "popup.html"
     }
 }
+
