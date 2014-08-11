@@ -1,5 +1,14 @@
 meters = localStorage.getItem('meters') || 0;
 
+window.showMeters = function () {
+    $('.meters').remove();
+    $('.rightColumnWrapper').append('<div style="padding: 12px; background: #fff; border: 1px solid; border-color: #e5e6e9 #dfe0e4 #d0d1d5; -webkit-border-radius: 3px; margin-top: 10px;" class="meters"><h2 style="color: #3b5998">You already scrolled ' + meters + ' meters</h2></div>');
+};
+
+if (meters != 0) {
+    showMeters();
+}
+
 window.getPPI = function () {
     // create an empty element
     var div = document.createElement("div");
@@ -38,7 +47,7 @@ window.onFacebookScroll = function () {
         console.info(distance);
 
 
-        if(distancecount / resolution > 100) {
+        if (distancecount / resolution > 100) {
             checkpoint();
 
             _dist += distancecount;
@@ -48,13 +57,14 @@ window.onFacebookScroll = function () {
             distancecount = distance - _dist;
         }
     });
-    window.checkpoint = function() {
+    window.checkpoint = function () {
 
         localStorage.setItem('meters', meters);
 
         meters++;
-        $('.meters').remove();
-        $('.rightColumnWrapper').append('<div class="meters"><h1>' + meters + ' meters</h1></div>');
+        showMeters();
+
     };
+
 
 };
