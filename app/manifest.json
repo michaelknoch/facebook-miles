@@ -12,7 +12,7 @@
     "content_scripts": [
         {
             "matches": ["https://*.facebook.com/*"],
-            "js": ["bower_components/jquery/dist/jquery.min.js"]
+            "js": ["bower_components/jquery/dist/jquery.js"]
         }
     ],
     "background": {
