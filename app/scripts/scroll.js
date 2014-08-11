@@ -1,3 +1,5 @@
+meters = 0;
+
 window.getPPI = function () {
     // create an empty element
     var div = document.createElement("div");
@@ -36,23 +38,18 @@ window.onFacebookScroll = function () {
         console.info(distance);
 
 
-        if(distancecount > 10000) {
-            console.error('distancecount');
+        if(distancecount / resolution > 100) {
+            checkpoint();
 
-
-            window.notify(distance);
             _dist += distancecount;
             distancecount = 0;
 
         } else {
-            console.log('distance', distance);
-            console.log('distancecount', distancecount);
-            console.log('_dist', _dist);
             distancecount = distance - _dist;
         }
     });
-    window.checkpoint = function(px) {
-
+    window.checkpoint = function() {
+        meters++;
     };
 
 };
