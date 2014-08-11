@@ -1,4 +1,4 @@
-meters = 0;
+meters = localStorage.getItem('meters') || 0;
 
 window.getPPI = function () {
     // create an empty element
@@ -49,7 +49,12 @@ window.onFacebookScroll = function () {
         }
     });
     window.checkpoint = function() {
+
+        localStorage.setItem('meters', meters);
+
         meters++;
+        $('.meters').remove();
+        $('.rightColumnWrapper').append('<div class="meters"><h1>' + meters + ' meters</h1></div>');
     };
 
 };
