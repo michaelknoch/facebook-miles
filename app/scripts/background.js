@@ -14,10 +14,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, status, tab) {
         if(tab) {
             if (tab.url.indexOf('facebook') !== -1) {
                 chrome.pageAction.show(tabId);
-                chrome.tabs.executeScript(null, {code: 'console.log(window.onscroll = function(e) {console.log(this.s); })'});
+                chrome.tabs.executeScript(null, {code: 'window.onFacebookScroll();'});
             }
         }
     }
 });
 
-console.log('\'Allo \'Allo! Event Page for Page Action');
+
