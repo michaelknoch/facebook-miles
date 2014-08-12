@@ -28,9 +28,6 @@
     "permissions": [
         "tabs",
         "https://*.facebook.com/*/*"
-<<<<<<< HEAD
-    ]
-=======
     ],
     "page_action": {
         "default_icon": {
@@ -39,5 +36,4 @@
         },
         "default_title": "facebook miles"
     }
->>>>>>> detached
 }
