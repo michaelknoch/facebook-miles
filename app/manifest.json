@@ -1,18 +1,22 @@
 {
-    "name": "__MSG_appName__",
-    "version": "0.0.2",
+    "name": "facebook meters",
+    "version": "0.0.4",
     "manifest_version": 2,
-    "description": "__MSG_appDescription__",
+    "description": "How many meters did you waste on facebook?",
     "icons": {
         "16": "images/icon-16.png",
         "128": "images/icon-128.png"
     },
     "default_locale": "en",
-
     "content_scripts": [
         {
-            "matches": ["https://*.facebook.com/*"],
-            "js": ["bower_components/jquery/dist/jquery.js", "scripts/scroll.js"]
+            "matches": [
+                "https://*.facebook.com/*"
+            ],
+            "js": [
+                "bower_components/jquery/dist/jquery.js",
+                "scripts/scroll.js"
+            ]
         }
     ],
     "background": {
@@ -21,15 +25,15 @@
             "scripts/background.js"
         ]
     },
-    "permissions": ["tabs", "https://*.facebook.com/*/*"],
-
+    "permissions": [
+        "tabs",
+        "https://*.facebook.com/*/*"
+    ],
     "page_action": {
         "default_icon": {
             "19": "images/icon-19.png",
             "38": "images/icon-38.png"
         },
-        "default_title": "facebook miles",
-        "default_popup": "popup.html"
+        "default_title": "facebook miles"
     }
 }
-
