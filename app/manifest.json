@@ -1,8 +1,8 @@
 {
-    "name": "__MSG_appName__",
-    "version": "0.0.3",
+    "name": "facebook meters",
+    "version": "0.0.4",
     "manifest_version": 2,
-    "description": "__MSG_appDescription__",
+    "description": "How many meters did you waste on facebook?",
     "icons": {
         "16": "images/icon-16.png",
         "128": "images/icon-128.png"
@@ -28,5 +28,16 @@
     "permissions": [
         "tabs",
         "https://*.facebook.com/*/*"
+<<<<<<< HEAD
     ]
+=======
+    ],
+    "page_action": {
+        "default_icon": {
+            "19": "images/icon-19.png",
+            "38": "images/icon-38.png"
+        },
+        "default_title": "facebook miles"
+    }
+>>>>>>> detached
 }
