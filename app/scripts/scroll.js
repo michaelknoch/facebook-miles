@@ -1,22 +1,23 @@
-meters = localStorage.getItem('meters') || 0;
+'use strict';
+var meters = localStorage.getItem('meters') || 0;
 var _listenerAdded = false;
 
-window.showMeters = function() {
+var showMeters = function() {
     $('.meters').remove();
     $('.rightColumnWrapper').append('<div style="padding: 12px; background: #fff; border: 1px solid; border-color: #e5e6e9 #dfe0e4 #d0d1d5; -webkit-border-radius: 3px; margin-top: 10px;" class="meters"><h2 style="color: #3b5998">You already scrolled ' + meters + ' meters</h2></div>');
 };
 
-if (meters != 0) {
+if (meters !== 0) {
     showMeters();
 }
 
-window.getPPI = function() {
+var getPPI = function() {
     // create an empty element
-    var div = document.createElement("div");
+    var div = document.createElement('div');
     // give it an absolute size of one inch
-    div.style.width = "1cm";
+    div.style.width = '1cm';
     // append it to the body
-    var body = document.getElementsByTagName("body")[0];
+    var body = document.getElementsByTagName('body')[0];
     body.appendChild(div);
     // read the computed width
     var ppi = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
@@ -26,7 +27,7 @@ window.getPPI = function() {
     return parseFloat(ppi);
 };
 
-window.checkpoint = function() {
+var checkpoint = function() {
 
     localStorage.setItem('meters', meters);
 
@@ -43,7 +44,7 @@ window.onFacebookScroll = function() {
     var resolution = getPPI();
     if (!_listenerAdded) {
         _listenerAdded = true;
-        $(window).scroll(function(event) {
+        $(window).scroll(function() {
 
             var st = $(this).scrollTop();
 
