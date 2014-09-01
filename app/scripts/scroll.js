@@ -1,17 +1,24 @@
 'use strict';
 var meters = localStorage.getItem('meters') || 0;
 var _listenerAdded = false;
+var distance = 0;
+var distancecount = 0;
+var lastScrollTop = 0;
+var _dist = 0;
 
-var showMeters = function() {
+
+window.showMeters = function() {
     $('.meters').remove();
     $('.rightColumnWrapper').append('<div style="padding: 12px; background: #fff; border: 1px solid; border-color: #e5e6e9 #dfe0e4 #d0d1d5; -webkit-border-radius: 3px; margin-top: 10px;" class="meters"><h2 style="color: #3b5998">You already scrolled ' + meters + ' meters</h2></div>');
 };
 
-if (meters !== 0) {
-    showMeters();
+if (meters < 1) {
+    meters = 'less than 1';
+    window.showMeters();
+    meters = 0;
 }
 
-var getPPI = function() {
+window.getPPI = function() {
     // create an empty element
     var div = document.createElement('div');
     // give it an absolute size of one inch
@@ -27,6 +34,8 @@ var getPPI = function() {
     return parseFloat(ppi);
 };
 
+var resolution = window.getPPI();
+
 var checkpoint = function() {
 
     localStorage.setItem('meters', meters);
@@ -37,36 +46,33 @@ var checkpoint = function() {
 };
 
 window.onFacebookScroll = function() {
-    var distance = 0;
-    var distancecount = 0;
-    var lastScrollTop = 0;
-    var _dist = 0;
-    var resolution = getPPI();
+
     if (!_listenerAdded) {
         _listenerAdded = true;
-        $(window).scroll(function() {
+        $(window).scroll(registerEvent);
+    }
+};
 
-            var st = $(this).scrollTop();
+var registerEvent = function() {
 
-            if (st > lastScrollTop) {
-                distance = distance + (st - lastScrollTop);
+    var st = $(this).scrollTop();
 
-            } else {
-                distance = distance - (st - lastScrollTop);
-            }
-            lastScrollTop = st;
-            //console.info(distance);
+    if (st > lastScrollTop) {
+        distance = distance + (st - lastScrollTop);
 
+    } else {
+        distance = distance - (st - lastScrollTop);
+    }
+    lastScrollTop = st;
+    //console.info(distance);
 
-            if (distancecount / resolution > 100) {
-                checkpoint();
+    if (distancecount / resolution > 100) {
+        checkpoint();
 
-                _dist += distancecount;
-                distancecount = 0;
+        _dist += distancecount;
+        distancecount = 0;
 
-            } else {
-                distancecount = distance - _dist;
-            }
-        });
+    } else {
+        distancecount = distance - _dist;
     }
 };
